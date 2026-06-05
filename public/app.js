@@ -50,9 +50,18 @@ async function validadorDeSenha(email, senha, senhaDois){
     const temEspaco = !/\s/.test(senha)
     if( minLen && maxLen && temMaiusc && temNumeros && temCaract && temMinusc && temEspaco){
 
-        const {data, error} = await supabase
-            .from('usuarios')
-            .insert({ email: email, senha: senha})
+        const resposta = await fetch('/cadastrar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, senha: senha })
+        })
+        const resultado = await resposta.json() 
+
+        if (resultado.sucesso) {
+            return abrirAviso(resultado.mensagem, "sucesso");
+        } else {
+            return abrirAviso(resultado.mensagem, "erro");
+        }
 
         formLogin.style.display = 'flex';
         formCadastrar.style.display = 'none';
@@ -72,13 +81,17 @@ async function loginUsuario(){
         const loginEmail = document.getElementById("login-entrar").value
         const loginSenha = document.getElementById("senha-entrar").value
 
-        const {data, error} = await supabase
-        .from('usuarios')
-        .select('*').eq('email', loginEmail).eq('senha', loginSenha)
-        if(data.length === 0){
-            return abrirAviso("Usuário/Senha Incorreto!", "erro")
-        }else {
-            return abrirAviso("Login com sucesso", "sucesso");
+        const resposta = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: loginEmail, senha: loginSenha })
+        })
+        const resultado = await resposta.json()
+
+        if (resultado.sucesso) {
+            return abrirAviso(resultado.mensagem, 'sucesso')
+        } else {
+            return abrirAviso(resultado.mensagem, 'erro')
         }
     })
 }
