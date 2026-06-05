@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutraLiving</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <img src="img/logo.png" class="logo">
+
+        <div class="tabs">
+            <button id="btn-login" class="active">Entrar</button>
+            <button id="btn-cadastro">Cadastrar</button>
+        </div>
+
+        <div id="aviso" class="caixa-aviso"> 
+            <p id="mensagem-aviso"> </p>
+            <button onclick="fecharAviso()">Fechar</button>
+        </div>
+
+        <form action="/login" method="post" class="card" id="card-entrar">
+            <label for="login-entrar"> Login </label>
+            <input id="login-entrar" type="email" placeholder="Digite seu E-Mail de login">
+            <label for="senha-entrar"> Senha </label>
+            <input id="senha-entrar" type="password" placeholder="Digite a sua senha">
+            <button type="submit"> ENTRAR </button>
+        </form>
+
+        <form action="/cadastrar" method="post" class="card" id="card-cadastrar" style="display: none;">
+            <label for="login-cadastro"> Login </label>
+            <input id="login-cadastro" type="email" placeholder="Digite o seu E-Mail">
+            <label for="senha-cadastro"> Senha </label>
+            <input id="senha-cadastro" type="password" placeholder="Digite sua senha">
+            <label for="confirmar-senha-cadastro"> Confirmar Senha </label>
+            <input id="confirmar-senha-cadastro" type="password" placeholder="Digite a senha novamente">
+            <button type="submit"> CADASTRAR </button>
+            <div class="aviso-senha">
+                <strong> ATENÇÃO </strong>
+                <ul>
+                    <li>A senha deve ter no mínimo 8 e no máximo 22 caracteres e conter ao menos:</li>
+                    <li>1 Letra Maiúscula</li>
+                    <li>1 Letra Minúscula</li>
+                    <li>1 Caracter Especial (!@#$)</li>
+                    <li>1 Número</li>
+                </ul>
+            </div>
+        </form>
+
+
+    </div>
+
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
