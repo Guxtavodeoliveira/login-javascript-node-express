@@ -1,6 +1,4 @@
-const { supabaseUrl, supabaseKey } = await fetch('/config').then(r => r.json())
-const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm')
-const supabase = createClient(supabaseUrl, supabaseKey)
+import { supabase } from "./supabase.js";
 
 const entrar = document.getElementById("btn-login");
 const cadastrar = document.getElementById("btn-cadastro")
