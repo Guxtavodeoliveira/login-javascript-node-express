@@ -24,14 +24,23 @@ cadastrar.addEventListener('click', () => {
 function cadastroUusario() {
     formCadastrar.addEventListener('submit', async function (event) {
         event.preventDefault();
+
+        const btnCadastrar = document.querySelector('#card-cadastrar button[type="submit"]')
+        btnCadastrar.disabled = true;
+        btnCadastrar.innerHTML = 'Aguarde...'
+
         const emailDigitado = document.getElementById("login-cadastro").value
         const senhaDigitada = document.getElementById("senha-cadastro").value
         const senhaConfirmada = document.getElementById("confirmar-senha-cadastro").value
 
         if (await verificarEmailJaCadastrado(emailDigitado)) {
             if (senhaDigitada === senhaConfirmada) {
+                btnCadastrar.disabled = false
+                btnCadastrar.innerHTML = 'CADASTRAR'
                 validadorDeSenha(emailDigitado, senhaDigitada);
             } else {
+                btnCadastrar.disabled = false
+                btnCadastrar.innerHTML = 'CADASTRAR'
                 return abrirAviso("A Senha digitada não é a mesma da confirmação", "erro");
             }
         }
@@ -69,6 +78,11 @@ cadastroUusario();
 async function loginUsuario() {
     formLogin.addEventListener('submit', async function (event) {
         event.preventDefault();
+
+        const btnEntrar = document.querySelector('#card-entrar button[type = "submit"]')
+        btnEntrar.disabled = true;
+        btnEntrar.innerHTML = 'Aguarde...'
+
         const loginEmail = document.getElementById("login-entrar").value
         const loginSenha = document.getElementById("senha-entrar").value
 
@@ -80,8 +94,12 @@ async function loginUsuario() {
         const resultado = await resposta.json()
 
         if (resultado.sucesso) {
+            btnEntrar.disabled = false
+            btnEntrar.innerHTML = 'ENTRAR'
             return abrirAviso(resultado.mensagem, 'sucesso')
         } else {
+            btnEntrar.disabled = false
+            btnEntrar.innerHTML = 'ENTRAR'
             return abrirAviso(resultado.mensagem, 'erro')
         }
     })
