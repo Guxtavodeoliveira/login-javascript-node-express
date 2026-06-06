@@ -1,24 +1,7 @@
 import { supabase } from "./supabase.js";
-
-const entrar = document.getElementById("btn-login");
-const cadastrar = document.getElementById("btn-cadastro")
-const formLogin = document.getElementById("card-entrar")
+import { abrirAviso, fecharAviso, inicializarTabs } from "./ui.js";
 const formCadastrar = document.getElementById("card-cadastrar")
-
-entrar.addEventListener('click', () => {
-    formLogin.style.display = 'flex';
-    formCadastrar.style.display = 'none';
-    entrar.classList.add('active')
-    cadastrar.classList.remove('active')
-})
-
-cadastrar.addEventListener('click', () => {
-    formCadastrar.style.display = 'flex';
-    formLogin.style.display = 'none';
-    entrar.classList.remove('active')
-    cadastrar.classList.add('active')
-})
-
+const formLogin = document.getElementById("card-entrar")
 function cadastroUusario() {
     formCadastrar.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -115,18 +98,5 @@ async function verificarEmailJaCadastrado(email) {
     }
 }
 
-function abrirAviso(mensagemDeAviso, tipo) {
-    document.getElementById("aviso").style.display = "flex";
-    document.getElementById("mensagem-aviso").innerHTML = mensagemDeAviso;
-    document.getElementById("aviso").classList.remove("sucesso", "erro", "aviso");
-    document.getElementById("aviso").classList.add(tipo)
-}
-
-function fecharAviso() {
-    const buttonFechar = document.getElementById("aviso-tela");
-    buttonFechar.addEventListener('click', () => {
-        document.getElementById("aviso").style.display = "none";
-        document.getElementById("aviso").classList.remove("sucesso", "erro", "aviso");
-    })
-}
 fecharAviso();
+inicializarTabs();
