@@ -35,7 +35,7 @@ app.post('/cadastrar', async (req, res) => {
         .insert({ email: email, senha: hashSenha })
 
     if (error) {
-        return res.status(500).json({ sucesso: false, mensagem: 'Erro ao cadastrar usuário' })
+        return res.status(500).json({ sucesso: false, mensagem: 'Erro ao cadastrar usuario' })
     }
 
     res.json({ sucesso: true, mensagem: 'Cadastro realizado com sucesso' })
@@ -49,13 +49,13 @@ app.post('/login', async (req, res) => {
         .select('*').eq('email', email)
 
     if (data.length === 0) {
-        return res.status(401).json({ sucesso: false, mensagem: 'Usuário/Senha Incorreto!' })
+        return res.status(401).json({ sucesso: false, mensagem: 'Usuario ou Senha Incorreto!' })
     }
 
     const senhaCorreta = await bcrypt.compare(senha, data[0].senha)
 
     if (!senhaCorreta) {
-        return res.status(401).json({ sucesso: false, mensagem: 'Usuário/Senha Incorreto!' })
+        return res.status(401).json({ sucesso: false, mensagem: 'Usuario ou Senha Incorreto!' })
     }
 
     res.json({ sucesso: true, mensagem: 'Login com sucesso' })
