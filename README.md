@@ -33,3 +33,6 @@ Sistema de autenticação desenvolvido como projeto de aprendizado, utilizando Nod
 3. Crie um arquivo `.env` com suas credenciais do Supabase
 4. Rode com `npm start`
 5. Acesse `http://localhost:3000`
+
+## Acesse o projeto
+https://login-javascript-node-express.onrender.com/
