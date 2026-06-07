@@ -32,3 +32,14 @@ export function inicializarTabs() {
         cadastrar.classList.add('active')
     })
 }
+
+export function atualizarRegra(idRegra, valido) {
+    const elemento = document.getElementById(idRegra)
+    const texto = elemento.getAttribute('data-texto')
+    elemento.innerHTML = (valido ? '[OK] ' : '[X] ') + texto
+    if (valido) {
+        elemento.classList.add('valido')
+    } else {
+        elemento.classList.remove('valido') 
+    }
+}

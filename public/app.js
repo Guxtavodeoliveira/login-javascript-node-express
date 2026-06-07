@@ -1,4 +1,4 @@
-import { cadastroUusario, loginUsuario } from "./auth.js";
+import { cadastroUusario, loginUsuario, iniciarValidacaoSenha } from "./auth.js";
 import { fecharAviso, inicializarTabs } from "./ui.js";
 
 const formCadastrar = document.getElementById("card-cadastrar")
@@ -8,3 +8,4 @@ cadastroUusario(formCadastrar);
 loginUsuario(formLogin)
 fecharAviso();
 inicializarTabs();
+iniciarValidacaoSenha();

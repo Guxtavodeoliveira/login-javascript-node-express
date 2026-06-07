@@ -1,5 +1,5 @@
 import { supabase } from "./supabase.js";
-import { abrirAviso } from "./ui.js";
+import { abrirAviso, atualizarRegra } from "./ui.js";
 
 export async function verificarEmailJaCadastrado(email) {
     const { data, error } = await supabase
@@ -91,5 +91,17 @@ export function cadastroUusario(formCadastrar) {
                 return abrirAviso("A Senha digitada não é a mesma da confirmação", "erro");
             }
         }
+    })
+}
+
+export function iniciarValidacaoSenha() {
+    const inputSenha = document.getElementById("senha-cadastro")
+    inputSenha.addEventListener('input', () => {
+        const senha = inputSenha.value
+        atualizarRegra('regra-tamanho', senha.length >= 8 && senha.length <= 22)
+        atualizarRegra('regra-maiuscula', /[A-Z]/.test(senha))
+        atualizarRegra('regra-minuscula', /[a-z]/.test(senha))
+        atualizarRegra('regra-especial', /[!@#$]/.test(senha))
+        atualizarRegra('regra-numero', /[0-9]/.test(senha))
     })
 }

@@ -38,15 +38,12 @@
             <label for="confirmar-senha-cadastro"> Confirmar Senha </label>
             <input id="confirmar-senha-cadastro" type="password" placeholder="Digite a senha novamente">
             <button type="submit"> CADASTRAR </button>
-            <div class="aviso-senha">
-                <strong> ATENÇÃO </strong>
-                <ul>
-                    <li>A senha deve ter no mínimo 8 e no máximo 22 caracteres e conter ao menos:</li>
-                    <li>1 Letra Maiúscula</li>
-                    <li>1 Letra Minúscula</li>
-                    <li>1 Caracter Especial (!@#$)</li>
-                    <li>1 Número</li>
-                </ul>
+            <div class="regras-senha">
+                <p id="regra-tamanho" data-texto="Minimo 8 e maximo 22 caracteres">[ X ] Minimo 8 e maximo 22 caracteres</p>
+                <p id="regra-maiuscula" data-texto="1 Letra Maiuscula">[ X ] 1 Letra Maiuscula</p>
+                <p id="regra-minuscula" data-texto="1 Letra Minuscula">[ X ] 1 Letra Minuscula</p>
+                <p id="regra-especial" data-texto="1 Caracter Especial (!@#$)">[ X ] 1 Caracter Especial (!@#$)</p>
+                <p id="regra-numero" data-texto="1 Numero">[ X ] 1 Numero</p>
             </div>
         </form>
 
