@@ -8,7 +8,7 @@ export async function verificarEmailJaCadastrado(email) {
     if (data.length === 0) {
         return true
     } else {
-        return abrirAviso("E-mail já cadastrado", "aviso");
+        return abrirAviso("E-mail ja cadastrado", "aviso");
     }
 }
 
@@ -88,7 +88,7 @@ export function cadastroUusario(formCadastrar) {
             } else {
                 btnCadastrar.disabled = false
                 btnCadastrar.innerHTML = 'CADASTRAR'
-                return abrirAviso("A Senha digitada não é a mesma da confirmação", "erro");
+                return abrirAviso("A Senha digitada não e a mesma da confirmação", "erro");
             }
         }
     })
